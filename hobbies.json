@@ -1,0 +1,45 @@
+{
+"hobbies" : [
+  {
+    "activity": "Reading",
+    "image": "img/reading.jpeg",
+    "id": 1,
+    "desc": "I've really made it a goal to read more in my free time and I'm glad that I've gotten more into reading."
+  },
+
+  {
+    "activity": "Arts and Crafts",
+    "image": "img/arts.jpg",
+    "id": 2,
+    "desc": "I like to do all sorts of things that allow me to be creative whether it be painting, embroidering, sewing, and even more things. Recently I've gotten into working with resin."
+  },
+
+  {
+    "activity": "Listen to Music",
+    "image": "img/music.jpg",
+    "id": 3,
+    "desc": "I listen to a bunch of diffent genres of music such as rap, hip hop, r&b, rock, alternative, etc. My most favorite artist would have to be Frank Ocean though."
+  },
+
+  {
+    "activity": "Baking",
+    "image": "img/baking.jpg",
+    "id": 4,
+    "desc": "Baking is another way for me to relax and relive stress but I do hate cleaning up after. My favorite thing to make are chocolate chip cookies or brownies."
+  },
+
+  {
+    "activity": "Watching Netflix",
+    "image": "img/netflix.jpg",
+    "id": 5,
+    "desc": "I don't know what Netflix has been on lately, but they've been making a lot of good shows and movies. My favorite movies made by Netflix would have to be the 'To All The Boys I've Loved Before' trilogy. I've watched those movies hundreds of times."
+  },
+
+  {
+    "activity":"Laying Down/ Sleeping",
+    "image": "img/sleep.jpg",
+    "id": 6,
+    "desc": "One of my most favorite things to do, laying down is probably one of the best things in the world. I love how my memory foam mattress hugs me and how my pillows always feel nice and cool."
+  }
+]
+}

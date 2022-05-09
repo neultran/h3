@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>H3 Carousel</title>
+  <!-- <script src="carousel.js" charset="utf-8"></script> -->
+    <script src="jquery-3.2.1.js"></script>
+    <script src="jquery-cycle-all.js"></script>
+    <style>
+    h1{
+      text-align: center;
+    }
+    h3{
+      text-align: center;
+    }
+    p{
+      text-align: center;
+
+    table{
+
+    }
+    </style>
+      <script>
+      //gets information from json file
+      var html = "";
+         $(document).ready(function()
+         {
+             $.getJSON("hobbies.json", function(data)
+             {
+                 $.each(data, function(key, value)
+                 {
+                     $.each(value, function(index, stuff)
+                     {
+                         //console.log(index + " " + stuff.Author);
+                         html += '<div>';
+                         html += '<h3 id="activity">' + stuff.activity + '</h3>';
+                        // html += '<h5>' + stuff.Author + '</h5>';
+                         html += '<p onclick="sixHobbies(' + stuff.id + ')"><img src="' + stuff.image
+                                 + '" style="max-width: 100%; max-height: 100%;"></p><p>' + stuff.desc + '</p></div>';
+                        // html += '<p>' + stuff.desc + '</p>';
+                     });
+                 });
+//move slides
+                 $("#box").html(html);
+                 $("#box").cycle(
+                 {
+                     fx: 'fade',
+                     pause: '1',
+                     prev: '#prev',
+                     next: '#next',
+                     speed: 500,
+                     timeout: 10000
+                 });
+        });
+      });
+
+//when next or previous buttons are used
+      function sixHobbies(t) {
+          console.log(t);
+          var data_file = "hobbies.json";
+          var http_request = new XMLHttpRequest();
+
+          try {
+              // Opera 8.0+, Firefox, Chrome, Safari
+              http_request = new XMLHttpRequest();
+
+          } catch (e) {
+              // Internet Explorer Browsers
+              try {
+                  http_request = new ActiveXObject("Msxml2.XMLHTTP");
+              } catch (e) {
+                  try {
+                      http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                  } catch (e) {
+                      // Something went wrong
+                      alert("Your browser broke!");
+                      return false;
+                  }
+              }
+          }
+          http_request.onreadystatechange = function () {
+              if (http_request.readyState == 4) {
+                  // Javascript function JSON.parse to parse JSON data
+                  var jsonObj = JSON.parse(http_request.responseText);
+
+                  // jsonObj variable now contains the data structure and can
+                  // be accessed as jsonObj.name and jsonObj.country.
+                  var text = "";
+                  for (var i = 0; i < jsonObj.hobbies.length; i++) {
+                          if (jsonObj.hobbies[i].id == t) {
+                    text = text + jsonObj.hobbies[i].activity +  "<br>"+jsonObj.hobbies[i].desc;
+                    var selection = i;
+                      }
+
+                  }
+                  console.log(selection);
+                  document.getElementById("information").innerHTML = text;
+
+              }
+          }
+          http_request.open("GET", data_file, true);
+          http_request.send();
+      }
+      </script>
+
+  </head>
+
+  <body>
+    <h1>H3 Carousel</h1>
+    <div id="main"><h3>Here are some of my favorite things to do (:</h3></div>
+    <!-- <p>Feel free to click on the picture for a short description.</p> -->
+<div id="hobbies"></div>
+<!-- displays pictures and text from json file -->
+  <table style="width:500px; margin-left:auto; margin-right:auto;">
+    <tr style="height: auto">
+      <td><a href='#' id="prev">Previous</a></td>
+      <td style="width:300px; height: auto"><div id="box"></div></td>
+      <td><a href="#" id="next">Next</a></td>
+    </tr>
+
+  </table>
+           <!-- <div id="information" style="text-align:center"></div> -->
+    </body>
+</html>
